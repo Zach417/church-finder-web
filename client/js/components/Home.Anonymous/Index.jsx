@@ -14,7 +14,9 @@ var HomePage = React.createClass({
         <div className="container-fluid" style={Style.gumbotron}>
           <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
             style={{padding:"0"}}>
-            <SearchComponent />
+            <div>
+              <SearchComponent />
+            </div>
           </div>
         </div>
       </div>

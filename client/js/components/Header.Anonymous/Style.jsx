@@ -31,6 +31,7 @@ module.exports = {
     position: "absolute",
     top: "0",
     right: "0",
+    display: "none",
   },
   noSpaceFloat: {
     padding: "0",
