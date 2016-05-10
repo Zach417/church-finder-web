@@ -9,16 +9,15 @@ var Button = require('./Button/Index.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary.Large;
 var ButtonSecondary = require('../Button/Index.jsx').Secondary.Large;
 
-var components = {
-  Christian: [
-    (<ChristianDoctrine />),
-    (<ChristianLiturgy />),
-    (<ChristianCulture />),
-  ],
-};
-
 var Component = React.createClass({
   getInitialState: function () {
+    this.components = {
+      Christian: [
+        (<ChristianDoctrine next={this.handleClick_Next} />),
+        (<ChristianLiturgy next={this.handleClick_Next} />),
+        (<ChristianCulture next={this.handleClick_Next} />),
+      ],
+    };
     return {
       religion: '',
       page: '',
@@ -91,13 +90,13 @@ var Component = React.createClass({
       )
     }
 
-    return components[this.state.religion][this.state.page];
+    return this.components[this.state.religion][this.state.page];
   },
 
   handleClick_Next: function () {
     $("#search-component")
       .effect("puff", "fast", function () {
-        if (this.state.page + 1 > components[this.state.religion].length) {
+        if (this.state.page + 1 > this.components[this.state.religion].length) {
           return;
         }
         this.setState({

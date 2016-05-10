@@ -6,8 +6,16 @@ var Button = require('../Button/Index.jsx');
 var Component = React.createClass({
   getInitialState: function () {
     return {
-      selected: ''
+      selected: '',
+      options: '',
     }
+  },
+
+  componentWillMount: function () {
+    this.setState({
+      selected: '',
+      options: this.props.options,
+    })
   },
 
   render: function () {
@@ -25,18 +33,19 @@ var Component = React.createClass({
 
   getOptions: function () {
     var className;
-    if (this.props.options.length == 1) {
+    if (this.state.options.length == 1) {
       className = "col-lg-12 col-md-12 col-sm-12 col-xs-12";
-    } else if (this.props.options.length == 2) {
+    } else if (this.state.options.length == 2) {
       className = "col-lg-6 col-md-6 col-sm-6 col-xs-12";
-    } else if (this.props.options.length == 3) {
+    } else if (this.state.options.length == 3) {
       className = "col-lg-4 col-md-4 col-sm-6 col-xs-12";
     } else {
       className = "col-lg-3 col-md-3 col-sm-6 col-xs-12";
     }
 
-    return this.props.options.map(function (option) {
+    return this.state.options.map(function (option) {
       var onClick = function () {
+        this.props.onSelect(option);
         this.setState({
           selected: option
         });
