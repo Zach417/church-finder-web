@@ -27,6 +27,7 @@ var Component = React.createClass({
       <div className="container-fluid">
         <div id="search-component">
           {this.getCurrentComponent()}
+          {this.getResults()}
           <div id="search-navigation" style={{marginTop:"20px"}}>
             {this.getButtons()}
           </div>
@@ -35,9 +36,33 @@ var Component = React.createClass({
     )
   },
 
+  getResults: function () {
+    if (this.state.religion == "" || this.state.page < 0) {
+      return;
+    }
+
+    if (this.state.page + 1 > this.components[this.state.religion].length) {
+      return (
+        <div className="row">
+          <h1>Results!</h1>
+        </div>
+      )
+    }
+  },
+
   getButtons: function () {
     if (this.state.religion == "" || this.state.page < 0) {
       return;
+    }
+
+    if (this.state.page + 1 > this.components[this.state.religion].length) {
+      return (
+        <div className="row">
+          <ButtonSecondary
+            label={"Back"}
+            onClick={this.handleClick_Back} />
+        </div>
+      )
     }
 
     return (
