@@ -3,6 +3,7 @@ var $ = require('jquery');
 var Style = require('./Style.jsx');
 var Button = require('./Button/Index.jsx');
 var Question = require('./Question/Index.jsx');
+var UserStore = require('../../stores').users;
 
 var Component = React.createClass({
   getInitialState: function () {
@@ -25,6 +26,27 @@ var Component = React.createClass({
   },
 
   handleSelect_Culture1: function (option) {
+    UserStore.get(function (users) {
+      var user = users[0];
+      var changed = false;
+      
+      user.questions.map(function (item, i) {
+        if (item.name === "The church should weigh in on political debates.") {
+          user.questions[i].answer = option;
+          changed = true;
+        }
+      });
+
+      if (changed === false) {
+        user.questions.push({
+          name: "The church should weigh in on political debates.",
+          answer: option,
+        });
+      }
+
+      UserStore.update(user, function () {
+      });
+    });
     this.answers.culture1 = option;
     this.setState(this.answers);
     this.props.next();

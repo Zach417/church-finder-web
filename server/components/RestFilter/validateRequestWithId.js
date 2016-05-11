@@ -6,17 +6,16 @@ var getUser = require('./getUser');
 module.exports = function (config) {
 
 	this.route = function (req, res, next) {
-		var email = req.session.email;
-		var accessToken = req.cookies.accessToken;
 		var id = req.params.id;
+		var userId = req.session.userId;
 
-		if (!email || !accessToken || !id) {
+		if (!userId || !id) {
 			return res.status(401).json(config.invalidRequest);
 		}
 
 		req.body = filter(config.writeFilterSchema, req.body);
 
-		getUser(email, accessToken, function (user) {
+		getUser(req.session.userId, function (user) {
 
 			var requestSecurity = new RequestSecurity({
 				method : req.method,

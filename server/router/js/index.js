@@ -5,11 +5,7 @@ var path = require('path');
 var _root = '../../../client';
 
 router.use(function (req, res, next) {
-	if (!req.session || !req.cookies.accessToken) {
-		res.sendFile(path.join(__dirname, _root, '/build/bundle.anonymous.js'));
-	} else {
-		res.sendFile(path.join(__dirname, _root, '/build/bundle.js'));
-	}
+	res.sendFile(path.join(__dirname, _root, '/build/bundle.anonymous.js'));
 });
 
 module.exports = router;

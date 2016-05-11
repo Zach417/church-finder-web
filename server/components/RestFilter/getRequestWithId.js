@@ -5,15 +5,14 @@ var getUser = require('./getUser');
 module.exports = function (config) {
 
 	this.route = function (req, res) {
-		var email = req.session.email;
-		var accessToken = req.cookies.accessToken;
 		var id = req.params.id;
-
-		if (!email || !accessToken || !id) {
+		var userId = req.session.userId;
+		
+		if (!userId || !id) {
 			return res.status(401).json(config.invalidRequest);
 		}
 
-		getUser(email, accessToken, function (user) {
+		getUser(req.session.userId, function (user) {
 
 			var requestSecurity = new RequestSecurity({
 				method : req.method,
