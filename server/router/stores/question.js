@@ -1,4 +1,4 @@
-var User = require('../../models/user');
+var Model = require('../../models/question');
 var RestFilter = require('../../components/RestFilter');
 var UserSecurity = require('../../components/UserSecurity');
 
@@ -7,19 +7,9 @@ var readFilterSchema = {
   "type": "object",
   "properties": {
 		"_id": { "type":"string" },
-		"sessionId": { "type":"string" },
-		"questions": {
-      "type":"array",
-      "items": {
-        "type":"object",
-        "properties": {
-          "questionId": { "type":"string" },
-          "answer": { "type":"string" },
-        },
-      },
-    },
-		"createdOn": { "type":"date" },
-		"modifiedOn": { "type":"date" },
+		"name": { "type":"string" },
+		"religion": { "type":"string" },
+		"category": { "type":"string" },
 	},
 }
 
@@ -27,49 +17,31 @@ var writeFilterSchema = {
   "title": "User Schema",
   "type": "object",
   "properties": {
-    "sessionId": { "type":"string" },
-    "questions": {
-      "type":"array",
-      "items": {
-        "type":"object",
-        "properties": {
-          "questionId": { "type":"string" },
-          "answer": { "type":"string" },
-        },
-      },
-    },
-	},
+    "name": { "type":"string" },
+    "religion": { "type":"string" },
+    "category": { "type":"string" },
+  },
 }
 
 function findOne (user, id, callback) {
-	User
+	Model
 		.findOne({"_id": id})
-		.where({
-			$or: [
-				{"_id": user._id},
-			]
-		})
 		.exec(function (err, result) {
 			return callback(result);
 		});
 }
 
 function findMany (user, callback) {
-	User
+	Model
 		.find()
-		.where({
-			$or: [
-				{"_id": user._id},
-			]
-		})
 		.exec(function (err, result) {
 			return callback(result);
 		});
 }
 
 module.exports = new RestFilter({
-	path : "/user",
-	model: User,
+	path : "/question",
+	model: Model,
 	readFilterSchema: readFilterSchema,
 	writeFilterSchema: writeFilterSchema,
 	findOne: findOne,
@@ -77,7 +49,7 @@ module.exports = new RestFilter({
 	securityRoles: {
 		create: UserSecurity.isNotAllowed,
 		read: UserSecurity.isActiveUser,
-		update: UserSecurity.isActiveUser,
+		update: UserSecurity.isNotAllowed,
 		destroy: UserSecurity.isNotAllowed,
 	}
 });

@@ -2,9 +2,7 @@ var React = require('react');
 var $ = require('jquery');
 require('jquery-ui');
 var Style = require('./Style.jsx');
-var ChristianCulture = require('./ChristianCulture.jsx');
-var ChristianDoctrine = require('./ChristianDoctrine.jsx');
-var ChristianLiturgy = require('./ChristianLiturgy.jsx');
+var Christian = require('./Christian/Index.jsx');
 var Button = require('./Button/Index.jsx');
 var ButtonPrimary = require('../Button/Index.jsx').Primary.Large;
 var ButtonSecondary = require('../Button/Index.jsx').Secondary.Large;
@@ -13,9 +11,9 @@ var Component = React.createClass({
   getInitialState: function () {
     this.components = {
       Christian: [
-        (<ChristianDoctrine next={this.handleClick_Next} />),
-        (<ChristianLiturgy next={this.handleClick_Next} />),
-        (<ChristianCulture next={this.handleClick_Next} />),
+        (<Christian.Doctrine next={this.handleClick_Next} />),
+        (<Christian.Liturgy next={this.handleClick_Next} />),
+        (<Christian.Culture next={this.handleClick_Next} />),
       ],
     };
     return {

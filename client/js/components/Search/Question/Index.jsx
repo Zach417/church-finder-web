@@ -2,6 +2,7 @@ var React = require('react');
 var $ = require('jquery');
 var Style = require('./Style.jsx');
 var Button = require('../Button/Index.jsx');
+var UserStore = require('../../../stores').users;
 
 var Component = React.createClass({
   getInitialState: function () {
@@ -14,15 +15,27 @@ var Component = React.createClass({
   componentWillMount: function () {
     this.setState({
       selected: '',
-      options: this.props.options,
-    })
+      options: ["Agree", "Disagree", "Not sure"]
+    });
+
+    UserStore.get(function (users) {
+      var user = users[0];
+      user.questions.map(function (item, i) {
+        if (item.questionId == this.props.question._id) {
+          this.setState({
+            selected: item.answer,
+            options: ["Agree", "Disagree", "Not sure"]
+          });
+        }
+      }.bind(this));
+    }.bind(this));
   },
 
   render: function () {
     return (
       <div className="row">
         <label style={Style.label}>
-          <h3 style={{margin:"10px"}}>{this.props.label}</h3>
+          <h3 style={{margin:"10px"}}>{this.props.question.name}</h3>
         </label>
         <div className="row">
           {this.getOptions()}
@@ -45,10 +58,32 @@ var Component = React.createClass({
 
     return this.state.options.map(function (option) {
       var onClick = function () {
-        this.props.onSelect(option);
+        this.props.onSelect(this.props.question);
         this.setState({
           selected: option
         });
+
+        UserStore.get(function (users) {
+          var user = users[0];
+          var changed = false;
+
+          user.questions.map(function (item, i) {
+            if (item.questionId === this.props.question._id) {
+              user.questions[i].answer = option;
+              changed = true;
+            }
+          }.bind(this));
+
+          if (changed === false) {
+            user.questions.push({
+              questionId: this.props.question._id,
+              answer: option,
+            });
+          }
+
+          UserStore.update(user, function () {
+          });
+        }.bind(this));
       }.bind(this)
 
       var isSelected = false;

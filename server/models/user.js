@@ -4,7 +4,7 @@ var mongoose = restful.mongoose;
 var userSchema = new mongoose.Schema({
   sessionId: String,
   questions: [{
-    name: String,
+    questionId: String,
     answer: String,
   }],
   createdOn: Date,
