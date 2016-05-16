@@ -1,6 +1,7 @@
 var React = require('react');
 var $ = require('jquery');
 require('jquery-ui');
+var BrowserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var Christian = require('./Christian/Index.jsx');
 var Button = require('./Button/Index.jsx');
@@ -17,8 +18,8 @@ var Component = React.createClass({
       ],
     };
     return {
-      religion: '',
-      page: '',
+      religion: 'Christian',
+      page: 0,
     }
   },
 
@@ -27,27 +28,12 @@ var Component = React.createClass({
       <div className="container-fluid">
         <div id="search-component">
           {this.getCurrentComponent()}
-          {this.getResults()}
           <div id="search-navigation" style={{marginTop:"20px"}}>
             {this.getButtons()}
           </div>
         </div>
       </div>
     )
-  },
-
-  getResults: function () {
-    if (this.state.religion == "" || this.state.page < 0) {
-      return;
-    }
-
-    if (this.state.page + 1 > this.components[this.state.religion].length) {
-      return (
-        <div className="row">
-          <h1>Results!</h1>
-        </div>
-      )
-    }
   },
 
   getButtons: function () {
@@ -121,6 +107,9 @@ var Component = React.createClass({
       .effect("puff", "fast", function () {
         if (this.state.page + 1 > this.components[this.state.religion].length) {
           return;
+        }
+        if (this.state.page + 2 > this.components[this.state.religion].length) {
+          return BrowserHistory.push('/results');
         }
         this.setState({
           religion: this.state.religion,

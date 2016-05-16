@@ -8,6 +8,7 @@ var readFilterSchema = {
   "properties": {
 		"_id": { "type":"string" },
 		"sessionId": { "type":"string" },
+		"isAdmin": { "type":"boolean" },
 		"questions": {
       "type":"array",
       "items": {

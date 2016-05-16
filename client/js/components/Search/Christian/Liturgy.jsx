@@ -1,7 +1,7 @@
 var React = require('react');
 var Style = require('../Style.jsx');
 var Question = require('../Question/Index.jsx');
-var QuestionStore = require('../../../stores/QuestionStore');
+var QuestionStore = require('../../../stores/question');
 
 var Component = React.createClass({
   getInitialState: function () {

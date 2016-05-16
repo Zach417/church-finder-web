@@ -9,6 +9,7 @@ router.use('/css', require('./css'));
 router.use(require('./auth'));
 
 router.use('/stores', require('./stores'));
+router.use('/methods', require('./methods'));
 router.use('/', require('./views'));
 
 module.exports = router;

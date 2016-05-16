@@ -8,8 +8,10 @@ var SubMenu = React.createClass({
 	render: function () {
 		return (
   		<ul id="menu-sub" style={Style.subMenu}>
-	  		<SubMenuListItem label={"Church"} to={"/church"} />
-  			<SubMenuListItem label={"Sign out"} to={"/sign-out"} />
+	  		<SubMenuListItem label={"Sign up"} to={"/sign-up"}
+					className="hidden-lg hidden-md hidden-sm" />
+	  		<SubMenuListItem label={"Sign in"} to={"/sign-in"} />
+  			<SubMenuListItem label={"Forgot password"} to="/forgot-password" />
   		</ul>
 		);
 	},

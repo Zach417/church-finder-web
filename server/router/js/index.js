@@ -5,7 +5,7 @@ var path = require('path');
 var _root = '../../../client';
 
 router.use(function (req, res, next) {
-	res.sendFile(path.join(__dirname, _root, '/build/bundle.anonymous.js'));
+	res.sendFile(path.join(__dirname, _root, '/build/bundle.js'));
 });
 
 module.exports = router;

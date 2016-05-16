@@ -2,7 +2,7 @@ var React = require('react');
 var $ = require('jquery');
 var Style = require('./Style.jsx');
 var Button = require('../Button/Index.jsx');
-var UserStore = require('../../../stores').users;
+var UserStore = require('../../../stores/user');
 
 var Component = React.createClass({
   getInitialState: function () {
