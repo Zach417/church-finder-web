@@ -14,7 +14,7 @@ var Component = React.createClass({
     QuestionStore.get(function (questions) {
       var result = [];
       questions.map(function (question) {
-        if (question.religion === "Christian" && question.category === "Culture") {
+        if (question.religion === "Christianity" && question.category === "Culture") {
           result.push(question);
         }
       });

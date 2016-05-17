@@ -15,6 +15,8 @@ var ChurchAdmin = require('./components/Church.Admin/Page.jsx');
 var ChurchesAdmin = require('./components/Churches.Admin/Page.jsx');
 var DenominationAdmin = require('./components/Denomination.Admin/Page.jsx');
 var DenominationsAdmin = require('./components/Denominations.Admin/Page.jsx');
+var QuestionAdmin = require('./components/Question.Admin/Page.jsx');
+var QuestionsAdmin = require('./components/Questions.Admin/Page.jsx');
 var Results = require('./components/Results/Page.jsx');
 
 function handleRouterUpdate () {
@@ -49,6 +51,10 @@ var Routes = (
 	    <Route path="denomination">
 	      <IndexRoute component={DenominationsAdmin} />
 	      <Route path=":id" component={DenominationAdmin} />
+			</Route>
+	    <Route path="question">
+	      <IndexRoute component={QuestionsAdmin} />
+	      <Route path=":id" component={QuestionAdmin} />
 			</Route>
 		</Route>
   </Route>

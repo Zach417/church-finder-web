@@ -46,4 +46,32 @@ router.get('/', function (req, res) {
 		});
 });
 
+router.get('/:id', function (req, res) {
+  var id = req.params.id;
+  var userId = req.session.userId;
+
+  if (!userId || ! id) { return invalidRequest(res); }
+
+	User
+		.findOne({"_id": userId})
+		.exec(function (err, user) {
+      if (err || !user) { return invalidRequest(res); }
+      Church
+    		.findOne({"_id": id})
+        .exec(function (err, church) {
+          var match = 0;
+          user.questions.map(function (userQuestion) {
+            var churchQuestion = church.questions.find(function (q) {
+              return q.questionId == userQuestion.questionId;
+            });
+            if (churchQuestion && churchQuestion.answer == userQuestion.answer) {
+              match++;
+            }
+          });
+          church._doc.match = match / user.questions.length
+          return res.json(church._doc);
+        });
+		});
+});
+
 module.exports = router;

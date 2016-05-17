@@ -47,9 +47,9 @@ module.exports = new RestFilter({
 	findOne: findOne,
 	findMany: findMany,
 	securityRoles: {
-		create: UserSecurity.isNotAllowed,
+		create: UserSecurity.isAdmin,
 		read: UserSecurity.isActiveUser,
-		update: UserSecurity.isNotAllowed,
-		destroy: UserSecurity.isNotAllowed,
+		update: UserSecurity.isAdmin,
+		destroy: UserSecurity.isAdmin,
 	}
 });

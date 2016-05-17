@@ -20,6 +20,13 @@ var ListItem = React.createClass({
 	render: function () {
     var line1 = "";
 
+    var match = "Poor Compatibility";
+    if (this.props.church.match > .75) {
+      match = "Strong Compatibility";
+    } else if (this.props.church.match > .5) {
+      match = "Good Compatibility";
+    }
+
 		return (
 				<div
           style={Style.listItem}
@@ -31,7 +38,7 @@ var ListItem = React.createClass({
               </Link>
             </h3>
             <p style={{margin:"0px"}}>
-              {"Match: " + Math.floor(this.props.church.match * 100) + "%"}
+              {match}
               <span>{" • "}</span>
               <a
                 target="_blank"
