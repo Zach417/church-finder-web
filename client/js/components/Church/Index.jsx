@@ -1,6 +1,7 @@
 var React = require('react');
 var Style = require('./Style.jsx');
 var Admin = require('./Admin.jsx');
+var Compatibility = require('./Compatibility.jsx');
 var Label = require('../Form/Index.jsx').Label;
 var Input = require('../Form/Index.jsx').Input;
 var ChurchStore = require('../../stores/church');
@@ -83,6 +84,7 @@ var Component = React.createClass({
             </a>
           </h4>
         </div>
+        <Compatibility church={this.state.church} />
       </div>
     )
   },
