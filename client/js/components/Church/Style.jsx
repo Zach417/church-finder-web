@@ -4,13 +4,28 @@ module.exports = {
     minHeight: "calc(100% - 65px)",
     fontFamily: "'Rokkitt', serif",
   },
+  rowTop: {
+    backgroundColor: "#f4f4f4",
+    borderBottom: "1px solid #ccc",
+    padding: "10px 0px",
+  },
+  rowMiddle: {
+    backgroundColor: "#f4f4f4",
+    borderBottom: "1px solid #ccc",
+    marginTop: "10px",
+    padding: "10px 0px",
+  },
+  rowBottom: {
+    backgroundColor: "#f4f4f4",
+    marginTop: "10px",
+    padding: "10px 0px",
+    borderBottom: "1px solid #ccc",
+  },
   subComponentContainer: {
     marginBottom: "20px",
   },
   componentContainer: {
-    backgroundColor: "#f4f4f4",
     position: "relative",
-    border: "1px solid #ccc",
     borderRadius: "3px",
     overflow: "hidden",
     padding: "20px",
