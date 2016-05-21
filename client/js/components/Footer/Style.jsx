@@ -3,9 +3,9 @@ module.exports = {
     fontFamily: "'Poiret One', cursive",
     display: "flex",
     width: "100%",
-    backgroundColor: "#3b3a36",
+    backgroundColor: "#222",
     padding: "35px 10px",
-    color: "#f4f4f4"
+    color: "white"
   },
   list: {
     listStyleType: "none",

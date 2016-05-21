@@ -1,16 +1,15 @@
 module.exports = {
   container: {
     color: "#3b3a36",
-    margin: "0",
-    minHeight: "100%",
-  },
-  jumbotron: {
-    color: "#3b3a36",
+    minHeight: "calc(100% - 65px)",
     fontFamily: "'Rokkitt', serif",
     textAlign: "center",
-    padding: "20px 0",
-    margin: "0",
     fontSize: "16px",
+    backgroundColor:"#fff",
+  },
+  buttonContainer: {
+    fontSize:"24px",
+    marginTop:"60px",
   },
   text: {
     fontFamily: "'Rokkitt', serif",

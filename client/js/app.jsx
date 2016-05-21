@@ -10,6 +10,7 @@ var IndexRoute = require('react-router').IndexRoute;
 var Footer = require('./components/Footer/Index.jsx');
 var Header = require('./components/Header/Index.jsx');
 var Home = require('./components/Home/Index.jsx');
+var Search = require('./components/Search/Page.jsx');
 var Church = require('./components/Church/Page.jsx');
 var ChurchAdmin = require('./components/Church.Admin/Page.jsx');
 var ChurchesAdmin = require('./components/Churches.Admin/Page.jsx');
@@ -39,6 +40,7 @@ var App = React.createClass({
 var Routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
+		<Route path="search" component={Search} />
 		<Route path="results" component={Results} />
 		<Route path="church">
 			<Route path=":id" component={Church} />

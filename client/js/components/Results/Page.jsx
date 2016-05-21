@@ -9,8 +9,7 @@ var Page = React.createClass({
 
   render: function () {
     return (
-      <div style={Style.pageContainer}
-        className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered">
+      <div style={Style.pageContainer}>
         <Churches />
       </div>
     )

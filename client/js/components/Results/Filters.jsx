@@ -12,18 +12,22 @@ var Component = React.createClass({
   render: function () {
     return (
       <div className="row">
-        <h4 style={{margin:"7px 0px"}}>
-          <b>Filters</b>
-        </h4>
-        <FilterButton
-          label={"Roman Catholicism"}
-          onClick={this.handleClick_RomanCatholic} />
-        <FilterButton
-          label={"Protestantism"}
-          onClick={this.handleClick_Protestant} />
-        <FilterButton
-          label={"Eastern Orthodoxy"}
-          onClick={this.handleClick_EasternOrthodoxy} />
+        <div 
+          style={{padding:"0px"}}
+          className="col-lg-8 col-xs-12 col-centered">
+          <h4 style={{margin:"7px 0px"}}>
+            <b>Filters</b>
+          </h4>
+          <FilterButton
+            label={"Roman Catholicism"}
+            onClick={this.handleClick_RomanCatholic} />
+          <FilterButton
+            label={"Protestantism"}
+            onClick={this.handleClick_Protestant} />
+          <FilterButton
+            label={"Eastern Orthodoxy"}
+            onClick={this.handleClick_EasternOrthodoxy} />
+        </div>
       </div>
     )
   },

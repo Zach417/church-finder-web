@@ -1,8 +1,8 @@
 module.exports = {
   container: {
-    backgroundColor: "#666666",
+    backgroundColor: "#8B89E1",
     display: "inline-block",
-    color: "#f1f4f6",
+    color: "white",
     cursor: "pointer",
     touchAction: "manipulation",
     userSelect: "none",
@@ -10,9 +10,9 @@ module.exports = {
     msUserSelect: "none"
   },
   containerSelected: {
-    backgroundColor: "#595959",
+    backgroundColor: "#6361D0",
     display: "inline-block",
-    color: "#f1f4f6",
+    color: "white",
     cursor: "pointer",
     touchAction: "manipulation",
     userSelect: "none",

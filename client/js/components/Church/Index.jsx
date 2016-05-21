@@ -44,7 +44,7 @@ var Component = React.createClass({
         </div>
         <div style={Style.rowTop} className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h1 style={{margin:"0px"}}>{this.state.church.name}</h1>
+            <h1 style={{color:"#094C83",margin:"0px"}}>{this.state.church.name}</h1>
           </div>
         </div>
         <div style={Style.rowMiddle} className="row">
@@ -54,7 +54,7 @@ var Component = React.createClass({
         </div>
         <div style={Style.rowBottom} className="row">
           <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3 style={{margin:"0px"}}>About</h3>
+            <h3 style={{color:"#094C83",margin:"0px"}}>About</h3>
             <div>
               {"Classification: "}
               {this.getClassification()}

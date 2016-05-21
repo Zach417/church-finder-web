@@ -51,6 +51,16 @@ var Component = React.createClass({
       )
     }
 
+    if (this.state.page === 0) {
+      return (
+        <div className="row">
+          <ButtonPrimary
+            label={"Next"}
+            onClick={this.handleClick_Next} />
+        </div>
+      )
+    }
+
     return (
       <div className="row">
         <ButtonSecondary

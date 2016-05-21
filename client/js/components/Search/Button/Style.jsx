@@ -1,14 +1,14 @@
 module.exports = {
   container: {
-    color: "#f4f4f4",
-    backgroundColor: "#c36b74",
+    color: "white",
+    backgroundColor: "#2BBE83",
     minHeight: "60px",
     display: "block",
     cursor: "pointer",
   },
   containerHovered: {
-    color: "#f4f4f4",
-    backgroundColor: "#a3434c",
+    color: "white",
+    backgroundColor: "#008A52",
     minHeight: "60px",
     display: "block",
     cursor: "pointer",

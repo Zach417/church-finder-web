@@ -25,7 +25,7 @@ var Component = React.createClass({
   render: function () {
     return (
       <div>
-        <h3 style={{margin:"0px"}}>
+        <h3 style={{color:"#094C83",margin:"0px"}}>
           {"Compatibility • "}
           {this.getOverall("strength")}
         </h3>
@@ -33,7 +33,7 @@ var Component = React.createClass({
           {this.getOverall("description")}
         </div>
         <div>
-          <h4 style={{margin:"0px"}}>
+          <h4 style={{color:"#094C83",margin:"0px"}}>
             {"Doctrinal Issues • "}
             {this.getDoctrine("strength")}
           </h4>
@@ -42,7 +42,7 @@ var Component = React.createClass({
           </div>
         </div>
         <div>
-          <h4 style={{margin:"0px"}}>
+          <h4 style={{color:"#094C83",margin:"0px"}}>
             {"Liturgy and Worship • "}
             {this.getLiturgy("strength")}
           </h4>
@@ -51,7 +51,7 @@ var Component = React.createClass({
           </div>
         </div>
         <div>
-          <h4 style={{margin:"0px"}}>
+          <h4 style={{color:"#094C83",margin:"0px"}}>
             {"Culture and Politics • "}
             {this.getCulture("strength")}
           </h4>
@@ -74,14 +74,15 @@ var Component = React.createClass({
       }
       return result;
     } else if (type === "description") {
-      var match = "Overall, you would likely not have excellent opportunities at this church. ";
       if (this.props.church.match > .75) {
-        match = "Overall, this church is an excellent match for you. ";
+        return "Overall, this church is an excellent fit for you.";
       } else if (this.props.church.match > .5) {
-        match = "Overall, this is pretty good church for you. ";
+        return "Overall, this church is a potential fit for you.";
+      } else if (this.props.church.match > .25) {
+        return "Overall, this church is might not be a great fit for you.";
+      } else if (this.props.church) {
+        return "Overall, this church is might not be a great fit for you.";
       }
-
-      return match;
     }
   },
 
@@ -117,13 +118,15 @@ var Component = React.createClass({
       }
       return result;
     } else if (type === "description") {
-      var result = "You wouldn't agree with most of the doctrinal issues at this church. ";
       if (match / total > .75) {
-        result = "This church aligns very strongly with your doctrinal beliefs, and you would agree with them on most issues. ";
+        return "You would likely agree with this church on many doctrinal issues.";
       } else if (match / total > .5) {
-        result = "You would agree with most of this church's doctrinal issues, but there would still be several topics that you may not agree with. ";
+        return "You would likely agree with this church on many doctrinal issues.";
+      } else if (match / total > .25) {
+        return "You might disagree with this church on doctrinal issues.";
+      } else if (match / total >= 0) {
+        return "You might disagree with this church on doctrinal issues.";
       }
-      return result;
     }
   },
 
@@ -159,13 +162,15 @@ var Component = React.createClass({
       }
       return result;
     } else if (type === "description") {
-      var result = "You would most likely feel uncomfortable during this church's worship. ";
       if (match / total > .75) {
-        result = "You would most likely really enjoy this church's worship service. ";
+        return "You would likely appreciate and enjoy this church's worship service and liturgy.";
       } else if (match / total > .5) {
-        result = "You would most likely be comfortable at this church's worship service, but it may not be your favorite. ";
+        return "You would likely feel comfortable during this church's worship service and liturgy.";
+      } else if (match / total > .25) {
+        return "You might feel uncomfortable during this church's worship service and liturgy.";
+      } else if (match / total >= 0) {
+        return "You might feel uncomfortable during this church's worship service and liturgy.";
       }
-      return result;
     }
   },
 
@@ -201,13 +206,15 @@ var Component = React.createClass({
       }
       return result;
     } else if (type === "description") {
-      var result = "You may not mesh well with the political environment of this church. ";
       if (match / total > .75) {
-        result = "Your political beliefs would fit right into this church and closely align with the church's belifs. ";
+        return "You would likely agree with this church on many cultural and political issues.";
       } else if (match / total > .5) {
-        result = "Your political beliefs are mostly aligned with the beliefs of this church, but you may not agree on all topics. ";
+        return "You may agree with this church on several cultural and political issues.";
+      } else if (match / total > .25) {
+        return "You might disagree with this church on many cultural and political issues.";
+      } else if (match / total >= 0) {
+        return "You might disagree with this church on many cultural and political issues.";
       }
-      return result;
     }
   },
 });

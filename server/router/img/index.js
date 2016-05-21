@@ -16,6 +16,10 @@ router.get('/logo-icon', function (req, res, next) {
 	res.sendFile(path.join(__dirname, _root, '/logo-icon.png'));
 });
 
+router.get('/reading-outside', function (req, res, next) {
+	res.sendFile(path.join(__dirname, _root, '/reading-outside.jpg'));
+});
+
 router.get('/mkt/home-dashboard', function (req, res, next) {
 	res.sendFile(path.join(__dirname, _root, '/mkt/home-dashboard.png'));
 });

@@ -12,7 +12,7 @@ module.exports = {
     borderBottom: "1px solid #ccc",
   },
   navigationMobile: {
-    backgroundColor: "#f4f4f4",
+    backgroundColor: "white",
     color: "#3b3a36",
     display: "inline-block",
     width: "100%",

@@ -14,7 +14,6 @@ var Component = React.createClass({
       this.setState({
         denomination: doc,
       });
-      console.log('mount',this.props.id,doc);
     }.bind(this));
   },
 
@@ -23,7 +22,6 @@ var Component = React.createClass({
       this.setState({
         denomination: doc,
       });
-      console.log('props',newProps.id,doc);
     }.bind(this));
   },
 

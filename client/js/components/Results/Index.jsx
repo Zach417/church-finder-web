@@ -31,11 +31,8 @@ var Churches = React.createClass({
     if (this.state.isLoading === true) {
       return (
         <div style={Style.pageContainer}>
-    			<div className="row-fluid" style={Style.jumbotron} onClick={this.handleClick_AddChurch}>
-    				<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-centered"
-              style={{padding:"0px"}}>
-              <img src="/img/wait" />
-            </div>
+    			<div style={Style.jumbotron} onClick={this.handleClick_AddChurch}>
+            <img src="/img/wait" />
           </div>
         </div>
       )
@@ -48,7 +45,7 @@ var Churches = React.createClass({
         <div className="row">
           <div
             style={{padding:"0px"}}
-            className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            className="col-lg-8 col-xs-12 col-centered">
             <h1 style={{margin:"0px"}}>
               Churches where you could do great things
             </h1>
@@ -60,7 +57,7 @@ var Churches = React.createClass({
         <div className="row">
           <div
             style={{padding:"0px"}}
-            className="container-fluid">
+            className="col-lg-8 col-xs-12 col-centered">
             {this.getChurches()}
           </div>
         </div>
