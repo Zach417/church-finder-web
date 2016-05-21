@@ -7,7 +7,8 @@ module.exports = {
     touchAction: "manipulation",
     userSelect: "none",
     WebkitUserSelect: "none",
-    msUserSelect: "none"
+    msUserSelect: "none",
+    float: "none",
   },
   containerSelected: {
     backgroundColor: "#1266AB",
@@ -17,7 +18,8 @@ module.exports = {
     touchAction: "manipulation",
     userSelect: "none",
     WebkitUserSelect: "none",
-    msUserSelect: "none"
+    msUserSelect: "none",
+    float: "none",
   },
   contents: {
     padding: "8px 10px",

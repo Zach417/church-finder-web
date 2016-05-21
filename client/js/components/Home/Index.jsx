@@ -15,7 +15,7 @@ var Component = React.createClass({
             paddingTop:"60px",
             paddingBottom:"40px",
             color:"white",
-            backgroundColor:"#2BBE83",
+            backgroundColor:"#222",
             backgroundImage:"url('/img/reading-outside')",
             backgroundSize:"cover",
           }}>
@@ -36,7 +36,7 @@ var Component = React.createClass({
         <div className="row" style={{
             paddingTop:"40px"
           }}>
-          <div className="col-md-4 col-xs-12">
+          <div className="col-sm-4 col-xs-12">
             <h3>What?</h3>
             <p>
               Match your beliefs and preferences to churches in your
@@ -44,7 +44,7 @@ var Component = React.createClass({
               comfortable with and happy being a part of.
             </p>
           </div>
-          <div className="col-md-4 col-xs-12">
+          <div className="col-sm-4 col-xs-12">
             <h3>Why?</h3>
             <p>
               It takes too long to find a church that's ideal. My town
@@ -52,7 +52,7 @@ var Component = React.createClass({
               years to visit them all and find the best one for me.
             </p>
           </div>
-          <div className="col-md-4 col-xs-12">
+          <div className="col-sm-4 col-xs-12">
             <h3>Huh?</h3>
             <p>
               Church websites don't always have the kind of information

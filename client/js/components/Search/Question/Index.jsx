@@ -33,7 +33,7 @@ var Component = React.createClass({
 
   render: function () {
     return (
-      <div className="row">
+      <div className="row-fluid">
         <label style={Style.label}>
           <h3 style={{margin:"10px"}}>{this.props.question.name}</h3>
         </label>
@@ -47,13 +47,13 @@ var Component = React.createClass({
   getOptions: function () {
     var className;
     if (this.state.options.length == 1) {
-      className = "col-lg-12 col-md-12 col-sm-12 col-xs-12";
+      className = "col-xs-12";
     } else if (this.state.options.length == 2) {
-      className = "col-lg-6 col-md-6 col-sm-6 col-xs-12";
+      className = "col-sm-6 col-xs-12";
     } else if (this.state.options.length == 3) {
-      className = "col-lg-4 col-md-4 col-sm-6 col-xs-12";
+      className = "col-sm-4 col-xs-12";
     } else {
-      className = "col-lg-3 col-md-3 col-sm-6 col-xs-12";
+      className = "col-md-3 col-xs-12";
     }
 
     return this.state.options.map(function (option) {

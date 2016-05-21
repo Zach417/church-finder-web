@@ -5,8 +5,18 @@ var BrowserHistory = require('react-router').browserHistory;
 var Style = require('./Style.jsx');
 var Christian = require('./Christian/Index.jsx');
 var Button = require('./Button/Index.jsx');
-var ButtonPrimary = require('../Button/Index.jsx').Primary.Large;
-var ButtonSecondary = require('../Button/Index.jsx').Secondary.Large;
+var ButtonPrimary = require('../Button/Index.jsx').Primary;
+var ButtonPrimaryLarge = require('../Button/Index.jsx').Primary.Large;
+var ButtonSecondaryLarge = require('../Button/Index.jsx').Secondary.Large;
+
+function getComponentNameFromPage (page) {
+  switch (page) {
+    case 0: return "Doctrine (1 of 3)";
+    case 1: return "Liturgy & Worship (2 of 3)";
+    case 2: return "Culture & Politics (3 of 3)";
+    default: return "-";
+  }
+}
 
 var Component = React.createClass({
   getInitialState: function () {
@@ -25,13 +35,57 @@ var Component = React.createClass({
 
   render: function () {
     return (
-      <div className="container-fluid">
-        <div id="search-component">
-          {this.getCurrentComponent()}
-          <div id="search-navigation" style={{marginTop:"20px"}}>
-            {this.getButtons()}
-          </div>
+      <div>
+        <div
+          style={Style.componentContainer}
+          className="row">
+          <h3
+            style={{margin:"0px",textAlign:"left"}}
+            className="col-sm-4 col-xs-12">
+            Search Tool
+          </h3>
+          <h3
+            style={{margin:"0px",textAlign:"right"}}
+            className="col-sm-8 hidden-xs">
+            {"Current component: "}
+            {getComponentNameFromPage(this.state.page)}
+          </h3>
+          <h3
+            style={{margin:"0px",textAlign:"left"}}
+            className="hidden-lg hidden-md hidden-sm col-xs-12">
+            {"Current component: "}
+            {getComponentNameFromPage(this.state.page)}
+          </h3>
+          <h4
+            style={{fontSize:"16px",margin:"0px",textAlign:"left"}}
+            className="col-xs-12">
+            Please take a moment to complete this short survey
+            in order to identify what churches are best for
+            you.
+          </h4>
         </div>
+        <div
+          id="search-component"
+          style={Style.componentContainer}
+          className="row">
+          {this.getCurrentComponent()}
+        </div>
+        {this.getButtonComponent()}
+      </div>
+    )
+  },
+
+  getButtonComponent: function () {
+    if (this.state.religion == "" || this.state.page < 0) {
+      return;
+    }
+
+    return (
+      <div
+        id="search-navigation"
+        style={Style.componentContainer}
+        className="row">
+        {this.getButtons()}
       </div>
     )
   },
@@ -43,8 +97,8 @@ var Component = React.createClass({
 
     if (this.state.page + 1 > this.components[this.state.religion].length) {
       return (
-        <div className="row">
-          <ButtonSecondary
+        <div className="col-xs-12">
+          <ButtonSecondaryLarge
             label={"Back"}
             onClick={this.handleClick_Back} />
         </div>
@@ -53,8 +107,8 @@ var Component = React.createClass({
 
     if (this.state.page === 0) {
       return (
-        <div className="row">
-          <ButtonPrimary
+        <div className="col-xs-12">
+          <ButtonPrimaryLarge
             label={"Next"}
             onClick={this.handleClick_Next} />
         </div>
@@ -62,14 +116,14 @@ var Component = React.createClass({
     }
 
     return (
-      <div className="row">
-        <ButtonSecondary
+      <div className="col-xs-12">
+        <ButtonSecondaryLarge
           label={"Back"}
           onClick={this.handleClick_Back} />
         <span style={{float:"left"}}>
           <div style={{padding:"18px 0px",width:"20px"}} />
         </span>
-        <ButtonPrimary
+        <ButtonPrimaryLarge
           label={"Next"}
           onClick={this.handleClick_Next} />
       </div>
@@ -77,44 +131,41 @@ var Component = React.createClass({
   },
 
   getCurrentComponent: function () {
-    if (this.state.religion == "" || this.state.page < 0) {
-      $("#search-navigation").hide();
-      return (
-        <div style={Style.sectionContainer} className="container-fluid">
-          <h1>{"Find the perfect congregation"}</h1>
-          <div className="row">
-            <label style={Style.label}>
-              <h3 style={{margin:"10px"}}>{"I am a..."}</h3>
-            </label>
-            <div className="row">
-              <Button
-                className={"col-lg-3 col-md-3 col-sm-6 col-xs-12"}
-                label={"Christian"}
-                onClick={this.handleClick_Religion} />
-              <Button
-                className={"col-lg-3 col-md-3 col-sm-6 col-xs-12"}
-                label={"Jew"}
-                onClick={this.handleClick_Religion} />
-              <Button
-                className={"col-lg-3 col-md-3 col-sm-6 col-xs-12"}
-                label={"Muslim"}
-                onClick={this.handleClick_Religion} />
-              <Button
-                className={"col-lg-3 col-md-3 col-sm-6 col-xs-12"}
-                label={"Not sure"}
-                onClick={this.handleClick_Religion} />
+    if (this.state.religion !== "" && this.state.page >= 0) {
+      return this.components[this.state.religion][this.state.page];
+    }
+
+    $("#search-navigation").hide();
+    return (
+      <div className="container-fluid">
+        <div className="row" style={{
+            paddingTop:"60px",
+            paddingBottom:"40px",
+          }}>
+          <div className="col-xs-12">
+            <h1 style={{fontSize:"64px"}}>
+              Find a church
+            </h1>
+            <h4 style={{fontSize:"16px"}}>
+              Please take a moment to complete this short survey
+              in order to identify what churches are best for
+              you.
+            </h4>
+            <div style={Style.buttonContainer}>
+              <ButtonPrimary
+                label={"Begin"}
+                onClick={this.handleClick_Begin} />
             </div>
           </div>
         </div>
-      )
-    }
-
-    return this.components[this.state.religion][this.state.page];
+      </div>
+    )
   },
 
   handleClick_Next: function () {
+    $('html,body').animate({ scrollTop: 0 }, 'slow');
     $("#search-component")
-      .effect("puff", "fast", function () {
+      .effect("pulsate", "slow", function () {
         if (this.state.page + 1 > this.components[this.state.religion].length) {
           return;
         }
@@ -131,6 +182,7 @@ var Component = React.createClass({
   },
 
   handleClick_Back: function () {
+    $('html,body').animate({ scrollTop: 0 }, 'slow');
     $("#search-component")
       .fadeOut("fast", function () {
         this.setState({
@@ -142,12 +194,13 @@ var Component = React.createClass({
       .fadeIn("fast");
   },
 
-  handleClick_Religion: function (answer) {
+  handleClick_Begin: function () {
+    $('html,body').animate({ scrollTop: 0 }, 'slow');
     $("#search-component")
-      .effect("puff", "fast", function () {
+      .effect("pulsate", "slow", function () {
         $("#search-navigation").show();
         this.setState({
-          religion: answer,
+          religion: "Christian",
           page: 0,
         });
       }.bind(this))

@@ -20,7 +20,7 @@ var Button = React.createClass({
             return (
                 <span
                   style={Style.containerSelected}
-                  className="col-lg-2 col-md-2 col-sm-2 col-xs-4"
+                  className="col-sm-2 col-xs-4"
                   onClick={this.props.onClick}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}>
@@ -33,7 +33,7 @@ var Button = React.createClass({
         return (
             <span
               style={Style.container}
-              className="col-lg-2 col-md-2 col-sm-2 col-xs-4"
+              className="col-sm-2 col-xs-4"
               onClick={this.props.onClick}
               onMouseOver={this.handleMouseOver}
               onMouseOut={this.handleMouseOut}>

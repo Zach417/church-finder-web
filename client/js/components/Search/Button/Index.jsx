@@ -9,7 +9,23 @@ var Component = React.createClass({
   },
 
   render: function () {
-    if (this.state.hovered || this.props.isSelected) {
+    if (this.props.isSelected) {
+      return (
+        <div
+          className={this.props.className}
+          onClick={this.handleClick}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}>
+          <span style={Style.containerSelected}>
+            <h3 style={Style.label}>
+              {this.props.label}
+            </h3>
+          </span>
+        </div>
+      )
+    }
+
+    if (this.state.hovered) {
       return (
         <div
           className={this.props.className}

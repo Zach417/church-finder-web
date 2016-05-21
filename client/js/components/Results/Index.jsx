@@ -42,19 +42,19 @@ var Churches = React.createClass({
       <div
         style={Style.componentContainer}
         className="container-fluid">
-        <div className="row">
+        <div className="row-fluid">
           <div
             style={{padding:"0px"}}
             className="col-lg-8 col-xs-12 col-centered">
             <h1 style={{margin:"0px"}}>
-              Churches where you could do great things
+              Here are some churches where you could do great things
             </h1>
           </div>
         </div>
         <Filters
           churches={this.searchResults}
           onFilter={this.handleFilter} />
-        <div className="row">
+        <div className="row-fluid">
           <div
             style={{padding:"0px"}}
             className="col-lg-8 col-xs-12 col-centered">

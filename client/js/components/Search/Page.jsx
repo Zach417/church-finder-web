@@ -9,12 +9,8 @@ var Component = React.createClass({
 
   render: function() {
     return (
-      <div className="container-fluid" style={Style.container}>
-        <div className="row">
-          <div className="col-lg-8 col-md-12 col-centered">
-            <SearchComponent />
-          </div>
-        </div>
+      <div style={Style.container} className="container-fluid">
+        <SearchComponent />
       </div>
     );
   },

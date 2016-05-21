@@ -11,8 +11,8 @@ var Component = React.createClass({
 
   render: function () {
     return (
-      <div className="row">
-        <div 
+      <div className="row-fluid">
+        <div
           style={{padding:"0px"}}
           className="col-lg-8 col-xs-12 col-centered">
           <h4 style={{margin:"7px 0px"}}>

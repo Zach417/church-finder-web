@@ -27,7 +27,6 @@ var Component = React.createClass({
   render: function () {
     return (
       <div style={Style.sectionContainer} className="container-fluid">
-        <h1>{"Liturgy and Worship"}</h1>
         {this.getQuestions()}
       </div>
     )
