@@ -11,9 +11,10 @@ var ButtonSecondaryLarge = require('../Button/Index.jsx').Secondary.Large;
 
 function getComponentNameFromPage (page) {
   switch (page) {
-    case 0: return "Doctrine (1 of 3)";
-    case 1: return "Liturgy & Worship (2 of 3)";
-    case 2: return "Culture & Politics (3 of 3)";
+    case 0: return "About You (1 of 4)";
+    case 1: return "Doctrine (2 of 4)";
+    case 2: return "Liturgy & Worship (3 of 4)";
+    case 3: return "Culture & Politics (4 of 4)";
     default: return "-";
   }
 }
@@ -22,6 +23,7 @@ var Component = React.createClass({
   getInitialState: function () {
     this.components = {
       Christian: [
+        (<Christian.City next={this.handleClick_Next} />),
         (<Christian.Doctrine next={this.handleClick_Next} />),
         (<Christian.Liturgy next={this.handleClick_Next} />),
         (<Christian.Culture next={this.handleClick_Next} />),
@@ -47,13 +49,11 @@ var Component = React.createClass({
           <h3
             style={{margin:"0px",textAlign:"right"}}
             className="col-sm-8 hidden-xs">
-            {"Current component: "}
             {getComponentNameFromPage(this.state.page)}
           </h3>
           <h3
             style={{margin:"0px",textAlign:"left"}}
             className="hidden-lg hidden-md hidden-sm col-xs-12">
-            {"Current component: "}
             {getComponentNameFromPage(this.state.page)}
           </h3>
           <h4
@@ -165,7 +165,7 @@ var Component = React.createClass({
   handleClick_Next: function () {
     $('html,body').animate({ scrollTop: 0 }, 'slow');
     $("#search-component")
-      .effect("pulsate", "slow", function () {
+      .fadeOut("fast", function () {
         if (this.state.page + 1 > this.components[this.state.religion].length) {
           return;
         }
@@ -197,7 +197,7 @@ var Component = React.createClass({
   handleClick_Begin: function () {
     $('html,body').animate({ scrollTop: 0 }, 'slow');
     $("#search-component")
-      .effect("pulsate", "slow", function () {
+      .fadeOut("fast", function () {
         $("#search-navigation").show();
         this.setState({
           religion: "Christian",

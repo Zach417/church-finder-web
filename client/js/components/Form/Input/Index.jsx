@@ -61,6 +61,9 @@ var FormInput = React.createClass({
   },
 
   handleBlur: function () {
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
     this.setState({
       isHovered: this.state.isHovered,
       isFocused: false,

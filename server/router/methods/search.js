@@ -21,7 +21,10 @@ router.get('/', function (req, res) {
 		.exec(function (err, user) {
       if (err || !user) { return invalidRequest(res); }
       Church
-        .find()
+        .find({
+          city: user.city,
+          state: user.state,
+        })
         .exec(function (err, churches) {
           if (err || !churches) { return invalidRequest(res); }
           var result = [];

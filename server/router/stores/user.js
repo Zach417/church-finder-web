@@ -8,6 +8,8 @@ var readFilterSchema = {
   "properties": {
 		"_id": { "type":"string" },
 		"sessionId": { "type":"string" },
+		"city": { "type":"string" },
+		"state": { "type":"string" },
 		"isAdmin": { "type":"boolean" },
 		"questions": {
       "type":"array",
@@ -29,6 +31,8 @@ var writeFilterSchema = {
   "type": "object",
   "properties": {
     "sessionId": { "type":"string" },
+		"city": { "type":"string" },
+		"state": { "type":"string" },
     "questions": {
       "type":"array",
       "items": {

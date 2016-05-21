@@ -7,6 +7,8 @@ var userSchema = new mongoose.Schema({
     questionId: String,
     answer: String,
   }],
+  city: String,
+  state: String,
   isAdmin: Boolean,
   createdOn: Date,
   modifiedOn: Date,
