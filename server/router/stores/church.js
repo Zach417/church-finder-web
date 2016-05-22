@@ -8,6 +8,7 @@ var readFilterSchema = {
   "properties": {
 		"_id": { "type":"string" },
 		"name": { "type":"string" },
+    "website": { "type":"string" },
 		"phone": { "type":"string" },
 		"email": { "type":"string" },
 		"addressLine1": { "type":"string" },
@@ -51,6 +52,7 @@ var writeFilterSchema = {
   "type": "object",
   "properties": {
     "name": { "type":"string" },
+    "website": { "type":"string" },
     "phone": { "type":"string" },
     "email": { "type":"string" },
     "addressLine1": { "type":"string" },
