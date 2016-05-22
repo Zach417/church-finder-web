@@ -42,7 +42,7 @@ var Component = React.createClass({
           <Select
             attribute={"answer"}
             value={this.props.question.answer}
-            options={["Agree","Disagree","Not sure"]}
+            options={["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]}
             onChange={this.handleChange_Attribute} />
         </div>
         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">

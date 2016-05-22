@@ -3,6 +3,17 @@ var Style = require('./Style.jsx');
 var UserStore = require('../../stores/user');
 var QuestionStore = require('../../stores/question');
 
+function answerToScale (answer) {
+  switch (answer) {
+    case "Strongly Agree": return 5;
+    case "Agree": return 4;
+    case "Neutral": return 3;
+    case "Disagree": return 2;
+    case "Strongly Disagree": return 1;
+    default: return 0;
+  }
+}
+
 var Component = React.createClass({
   getInitialState: function () {
     return {
@@ -23,6 +34,16 @@ var Component = React.createClass({
   },
 
   render: function () {
+    if (!this.props.church.questions || this.props.church.questions.length < 3) {
+      return (
+        <div>
+          This church has not provided enough information
+          in order to estimate your compatibility to the
+          organization.
+        </div>
+      )
+    }
+
     return (
       <div>
         <h3 style={{color:"#094C83",margin:"0px"}}>
@@ -90,8 +111,10 @@ var Component = React.createClass({
     if (!this.state.user) { return }
     if (!this.state.questions) { return }
 
+    var difference = 0;
     var match = 0;
     var total = 0;
+
     this.state.user.questions.map(function (userQuestion) {
       var churchQuestion = this.props.church.questions.find(function (q) {
         return q.questionId == userQuestion.questionId;
@@ -101,26 +124,32 @@ var Component = React.createClass({
         return q._id == churchQuestion.questionId;
       });
       if (question && question.category == "Doctrine") {
-        if (churchQuestion && churchQuestion.answer == userQuestion.answer) {
-          match++;
+        if (!churchQuestion) {
+          difference = difference + 4;
+        } else {
+          var churchAnswerScore = answerToScale(churchQuestion.answer);
+          var userAnswerScore = answerToScale(userQuestion.answer);
+          difference = difference + Math.abs(churchAnswerScore - userAnswerScore);
         }
-        total++;
+        total = total + 4;
       }
     }.bind(this));
+
+    match = total - difference;
 
     if (type === "strength") {
       return Math.floor(match / total * 100) + "%";
       var result = "👎";
       if (match / total > .75) {
         result = "👍👍";
-      } else if (match / total > .5) {
+      } else if (match / total > .6) {
         result = "👍";
       }
       return result;
     } else if (type === "description") {
       if (match / total > .75) {
         return "You would likely agree with this church on many doctrinal issues.";
-      } else if (match / total > .5) {
+      } else if (match / total > .6) {
         return "You would likely agree with this church on many doctrinal issues.";
       } else if (match / total > .25) {
         return "You might disagree with this church on doctrinal issues.";
@@ -134,8 +163,10 @@ var Component = React.createClass({
     if (!this.state.user) { return }
     if (!this.state.questions) { return }
 
+    var difference = 0;
     var match = 0;
     var total = 0;
+
     this.state.user.questions.map(function (userQuestion) {
       var churchQuestion = this.props.church.questions.find(function (q) {
         return q.questionId == userQuestion.questionId;
@@ -145,26 +176,32 @@ var Component = React.createClass({
         return q._id == churchQuestion.questionId;
       });
       if (question && question.category == "Liturgy") {
-        if (churchQuestion && churchQuestion.answer == userQuestion.answer) {
-          match++;
+        if (!churchQuestion) {
+          difference = difference + 4;
+        } else {
+          var churchAnswerScore = answerToScale(churchQuestion.answer);
+          var userAnswerScore = answerToScale(userQuestion.answer);
+          difference = difference + Math.abs(churchAnswerScore - userAnswerScore);
         }
-        total++;
+        total = total + 4;
       }
     }.bind(this));
+
+    match = total - difference;
 
     if (type === "strength") {
       return Math.floor(match / total * 100) + "%";
       var result = "👎";
       if (match / total > .75) {
         result = "👍👍";
-      } else if (match / total > .5) {
+      } else if (match / total > .6) {
         result = "👍";
       }
       return result;
     } else if (type === "description") {
       if (match / total > .75) {
         return "You would likely appreciate and enjoy this church's worship service and liturgy.";
-      } else if (match / total > .5) {
+      } else if (match / total > .6) {
         return "You would likely feel comfortable during this church's worship service and liturgy.";
       } else if (match / total > .25) {
         return "You might feel uncomfortable during this church's worship service and liturgy.";
@@ -178,8 +215,10 @@ var Component = React.createClass({
     if (!this.state.user) { return }
     if (!this.state.questions) { return }
 
+    var difference = 0;
     var match = 0;
     var total = 0;
+
     this.state.user.questions.map(function (userQuestion) {
       var churchQuestion = this.props.church.questions.find(function (q) {
         return q.questionId == userQuestion.questionId;
@@ -189,26 +228,32 @@ var Component = React.createClass({
         return q._id == churchQuestion.questionId;
       });
       if (question && question.category == "Culture") {
-        if (churchQuestion && churchQuestion.answer == userQuestion.answer) {
-          match++;
+        if (!churchQuestion) {
+          difference = difference + 4;
+        } else {
+          var churchAnswerScore = answerToScale(churchQuestion.answer);
+          var userAnswerScore = answerToScale(userQuestion.answer);
+          difference = difference + Math.abs(churchAnswerScore - userAnswerScore);
         }
-        total++;
+        total = total + 4;
       }
     }.bind(this));
+
+    match = total - difference;
 
     if (type === "strength") {
       return Math.floor(match / total * 100) + "%";
       var result = "👎";
       if (match / total > .75) {
         result = "👍👍";
-      } else if (match / total > .5) {
+      } else if (match / total > .6) {
         result = "👍";
       }
       return result;
     } else if (type === "description") {
       if (match / total > .75) {
         return "You would likely agree with this church on many cultural and political issues.";
-      } else if (match / total > .5) {
+      } else if (match / total > .6) {
         return "You may agree with this church on several cultural and political issues.";
       } else if (match / total > .25) {
         return "You might disagree with this church on many cultural and political issues.";

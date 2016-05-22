@@ -21,7 +21,9 @@ var ListItem = React.createClass({
     var line1 = "";
 
     var match = "Poor Compatibility";
-    if (this.props.church.match > .75) {
+    if (this.props.church.questions < 3) {
+      match = "Compatibility Not Available";
+    } else if (this.props.church.match > .75) {
       match = "Strong Compatibility";
     } else if (this.props.church.match > .5) {
       match = "Good Compatibility";
