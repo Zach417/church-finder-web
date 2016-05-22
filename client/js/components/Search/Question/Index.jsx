@@ -15,7 +15,7 @@ var Component = React.createClass({
   componentWillMount: function () {
     this.setState({
       selected: '',
-      options: ["Agree", "Disagree", "Not sure"]
+      options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]
     });
 
     UserStore.get(function (users) {
@@ -24,7 +24,7 @@ var Component = React.createClass({
         if (item.questionId == this.props.question._id) {
           this.setState({
             selected: item.answer,
-            options: ["Agree", "Disagree", "Not sure"]
+            options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]
           });
         }
       }.bind(this));
@@ -52,8 +52,10 @@ var Component = React.createClass({
       className = "col-sm-6 col-xs-12";
     } else if (this.state.options.length == 3) {
       className = "col-sm-4 col-xs-12";
-    } else {
+    } else if (this.state.options.length == 4) {
       className = "col-md-3 col-xs-12";
+    } else {
+      className = "col-md-2 col-xs-12";
     }
 
     return this.state.options.map(function (option) {
