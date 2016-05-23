@@ -19,7 +19,14 @@ var Component = React.createClass({
             backgroundSize:"cover",
           }}>
           <div className="col-xs-12">
-            <h1 style={{fontSize:"64px"}}>
+            <h1
+              style={{fontSize:"64px"}}
+              className="hidden-xs">
+              damascus.io
+            </h1>
+            <h1
+              style={{fontSize:"60px"}}
+              className="hidden-lg hidden-md hidden-sm">
               damascus.io
             </h1>
             <h4 style={{fontSize:"16px"}}>
