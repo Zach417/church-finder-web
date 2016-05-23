@@ -16,14 +16,13 @@ var Component = React.createClass({
             paddingBottom:"40px",
             color:"white",
             backgroundColor:"#222",
-            backgroundImage:"url('/img/reading-outside')",
             backgroundSize:"cover",
           }}>
           <div className="col-xs-12">
-            <h1 style={{textShadow:"2px 2px #222",fontSize:"64px"}}>
-              Church Finder
+            <h1 style={{fontSize:"64px"}}>
+              damascus.io
             </h1>
-            <h4 style={{textShadow:"2px 2px #222",fontSize:"16px"}}>
+            <h4 style={{fontSize:"16px"}}>
               A TOOL FOR MATCHING PEOPLE WITH CHURCHES
             </h4>
             <div style={Style.buttonContainer}>

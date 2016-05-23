@@ -14,7 +14,7 @@ var Header = React.createClass({
 				<div style={Style.navigation} className="hidden-sm hidden-xs">
 					<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered"
 						style={{padding:"0"}}>
-						<Link to="/" style={Style.title}>{"Church Finder"}</Link>
+						<Link to="/" style={Style.title}>{"damascus.io"}</Link>
 						<Link to="/">
 							<img style={Style.logo} src="/img/logo-icon" onClick={this.handleClick_Logo} />
 						</Link>
@@ -27,7 +27,7 @@ var Header = React.createClass({
 				<div style={Style.navigationMobile}>
 					<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered"
 						style={{padding:"0"}}>
-						<Link to="/" style={Style.title}>{"Church Finder"}</Link>
+						<Link to="/" style={Style.title}>{"damascus.io"}</Link>
 						<Link to="/">
 							<img style={Style.logo} src="/img/logo-icon" onClick={this.handleClick_Logo} />
 						</Link>

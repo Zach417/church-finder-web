@@ -10,9 +10,8 @@ var Footer = React.createClass({
       <div style={Style.container} className="row-fluid">
 				<div className="col-lg-8 col-xs-12 col-centered">
 					<div>
-            {"Copyright © 2016-" + today.getFullYear() + " Church Finder"}
-            {" | zach@churchetto.com"}
-            {" | 417.849.3612"}
+            {"© " + today.getFullYear() + " damascus.io"}
+            {" | zach@damascus.io"}
             {" | Springfield, MO"}
 					</div>
 			    <div style={{paddingTop:"10px"}}>
