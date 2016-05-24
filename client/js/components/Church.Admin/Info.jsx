@@ -72,7 +72,7 @@ var Component = React.createClass({
             type={"text"}
             attribute={"classification"}
             value={this.props.church.classification}
-            options={["Roman Catholicism","Protestantism","Eastern Orthodoxy","Anglicanism","Oriental Orthodoxy","Nestorianism","Other"]}
+            options={["Roman Catholicism","Protestantism","Eastern Orthodoxy","Anglicanism","Oriental Orthodoxy","Nestorianism","Catholicism","Other"]}
             onChange={this.handleChange_Attribute} />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
